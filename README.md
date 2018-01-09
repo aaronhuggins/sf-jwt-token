@@ -16,9 +16,10 @@ $ openssl req  -nodes -new -x509  -keyout private.pem -out server.cert
 
 ### Step 2 : The connected App
 Create a connected app in Salesforce:
--Select **Enable OAuth Settings**
--Select **Use digital signatures**
--Upload the generated **certificate**
+
+1. Select **Enable OAuth Settings**
+2. Select **Use digital signatures**
+3. [x] Upload the generated **certificate**
 ![create the connected app in Salesforce](https://lh6.googleusercontent.com/qySXu8HlX3SAavwS_e9si6Ckz5qYUEROF6iOzZpPalrAM7mszi8fjCm1HgI4MhXz_jpp0ZlJ6YIaokbqgtOL=w3360-h1952-rw)
 
 ## Usage
