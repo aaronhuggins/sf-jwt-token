@@ -37,7 +37,6 @@ var token = jwt.getToken(
 	"<YOUR_SALESFORCE_USERNAME>",
 	"<ISSUER>",
 	privateKey,
-	false, // is Sandbox ?
 	function(err, token){
 	console.log(token)
 })
