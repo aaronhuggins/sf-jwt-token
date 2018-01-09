@@ -19,7 +19,8 @@ Create a connected app in Salesforce:
 
 1. Select **Enable OAuth Settings**
 2. Select **Use digital signatures**
-3. [x] Upload the generated **certificate**
+3. Upload the generated **certificate**
+
 ![create the connected app in Salesforce](https://lh6.googleusercontent.com/qySXu8HlX3SAavwS_e9si6Ckz5qYUEROF6iOzZpPalrAM7mszi8fjCm1HgI4MhXz_jpp0ZlJ6YIaokbqgtOL=w3360-h1952-rw)
 
 ## Usage
