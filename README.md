@@ -5,8 +5,8 @@
 ```javascript
 
 const   fs = require('fs')
-	,   privateKey = fs.readFileSync('private.pem').toString('utf8')
-	,	jwt = require("salesforce-jwt-bearer-token-flow")
+    ,   privateKey = fs.readFileSync('private.pem').toString('utf8')
+    ,   jwt = require("salesforce-jwt-bearer-token-flow")
 ;
 
 var token = jwt.getToken(
@@ -18,5 +18,19 @@ var token = jwt.getToken(
 	function(err, token){
 	console.log(token)
 })
+
+```
+
+## Output
+
+```javascript
+
+{
+    access_token: 'xxxxxxxxxx!ARYAQNzk4LCbHsX[...]',
+    scope: 'id full',
+    instance_url: 'https://eu6.salesforce.com',
+    id: 'https://login.salesforce.com/id/xxxxxxxxxxEAI/yyyyyyyyyy',
+    token_type: 'Bearer'
+}
 
 ```
