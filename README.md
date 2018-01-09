@@ -1,4 +1,5 @@
 # Salesforce OAuth 2.0 JWT Bearer Token Flow Implementation
+[Salesforce OAuth 2.0 JWT Bearer Token Flow](https://help.salesforce.com/articleView?id=remoteaccess_oauth_jwt_flow.htm&type=5)
 
 ## Installation
 ```bash
@@ -6,15 +7,22 @@ $ npm install salesforce-jwt-bearer-token-flow --save
 ```
 
 ## Salesforce Configuration
+
 ### Step 1 : The certificate
+Create the private key and the certificate in osx terminal:
 ```bash
 $ openssl req  -nodes -new -x509  -keyout private.pem -out server.cert
 ```
+
 ### Step 2 : The connected App
+Create a connected app in Salesforce:
+-Select **Enable OAuth Settings**
+-Select **Use digital signatures**
+-Upload the generated **certificate**
 ![create the connected app in Salesforce](https://lh6.googleusercontent.com/qySXu8HlX3SAavwS_e9si6Ckz5qYUEROF6iOzZpPalrAM7mszi8fjCm1HgI4MhXz_jpp0ZlJ6YIaokbqgtOL=w3360-h1952-rw)
 
-
 ## Usage
+
 ### Input
 ```javascript
 const   fs = require('fs')
@@ -33,6 +41,7 @@ var token = jwt.getToken(
 })
 ```
 ### Output
+
 ```javascript
 {
     access_token: 'xxxxxxxxxx!ARYAQNzk4LCbHsX[...]',
@@ -42,6 +51,7 @@ var token = jwt.getToken(
     token_type: 'Bearer'
 }
 ```
+
 ## License
 
 MIT
