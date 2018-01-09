@@ -32,13 +32,14 @@ const   fs = require('fs')
     ,   jwt = require("salesforce-jwt-bearer-token-flow")
 ;
 
-var token = jwt.getToken(
+var token = jwt.getToken({
 	"<YOUR_CONNECTED_APP_CLIENT_ID>",
 	"<YOUR_SALESFORCE_USERNAME>",
 	"<ISSUER>",
 	privateKey,
 	function(err, token){
-	console.log(token)
+	    console.log(token);
+    }
 })
 ```
 ### Output
