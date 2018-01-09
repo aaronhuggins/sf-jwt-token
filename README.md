@@ -11,10 +11,11 @@ $ npm install salesforce-jwt-bearer-token-flow --save
 $ openssl req  -nodes -new -x509  -keyout private.pem -out server.cert
 ```
 ### Step 2 : The connected App
+![create the connected app in Salesforce](https://lh6.googleusercontent.com/qySXu8HlX3SAavwS_e9si6Ckz5qYUEROF6iOzZpPalrAM7mszi8fjCm1HgI4MhXz_jpp0ZlJ6YIaokbqgtOL=w3360-h1952-rw)
 
 
-
-## Example
+## Usage
+### Input
 ```javascript
 const   fs = require('fs')
     ,   privateKey = fs.readFileSync('private.pem').toString('utf8')
@@ -31,8 +32,7 @@ var token = jwt.getToken(
 	console.log(token)
 })
 ```
-
-## Output
+### Output
 ```javascript
 {
     access_token: 'xxxxxxxxxx!ARYAQNzk4LCbHsX[...]',
