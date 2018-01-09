@@ -33,14 +33,15 @@ const   fs = require('fs')
 ;
 
 var token = jwt.getToken({
-	"<YOUR_CONNECTED_APP_CLIENT_ID>",
-	"<YOUR_SALESFORCE_USERNAME>",
-	"<ISSUER>",
-	privateKey,
+	    iss: "<YOUR_CONNECTED_APP_CLIENT_ID>",
+	    sub: "<YOUR_SALESFORCE_USERNAME>",
+        aud: "<YOUR_AUDIENCE>",
+        privateKey: privateKey
+    },
 	function(err, token){
 	    console.log(token);
     }
-})
+);
 ```
 ### Output
 

@@ -1,6 +1,6 @@
 {
   "name": "salesforce-jwt-bearer-token-flow",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "./lib/jwt.js",
   "description": "SalesForce OAuth 2.0 JWT Bearer Token Flow Implementation",
   "dependencies": {
