@@ -31,16 +31,21 @@ const   fs = require('fs')
 ;
 
 var token = jwt.getToken({
-	    iss: "<YOUR_CONNECTED_APP_CLIENT_ID>",
-	    sub: "<YOUR_SALESFORCE_USERNAME>",
+        iss: "<YOUR_CONNECTED_APP_CLIENT_ID>",
+        sub: "<YOUR_SALESFORCE_USERNAME>",
         aud: "<YOUR_AUDIENCE>",
         privateKey: privateKey
     },
-	function(err, token){
-	    console.log(token);
+    function(err, token){
+        console.log(token);
     }
 );
 ```
+The audience (aud) must be:
+- https://login.salesforce.com,
+- https://test.salesforce.com
+- https://acme.force.com/customers (where acme.force.com/customers is your community URL)
+
 ### Output
 
 ```javascript
