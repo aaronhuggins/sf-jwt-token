@@ -23,14 +23,14 @@ Create a connected app in Salesforce:
 
 ## Usage
 
-### Input
+### Input (Callback)
 ```javascript
 const   fs = require('fs')
     ,   privateKey = fs.readFileSync('private.pem').toString('utf8')
     ,   jwt = require("salesforce-jwt-bearer-token-flow")
 ;
 
-var token = jwt.getToken({
+const token = jwt.getToken({
         iss: "<YOUR_CONNECTED_APP_CLIENT_ID>",
         sub: "<YOUR_SALESFORCE_USERNAME>",
         aud: "<YOUR_AUDIENCE>",
@@ -41,6 +41,25 @@ var token = jwt.getToken({
     }
 );
 ```
+
+### Input (Promise)
+```javascript
+const   fs = require('fs')
+    ,   privateKey = fs.readFileSync('private.pem').toString('utf8')
+    ,   jwt = require("salesforce-jwt-bearer-token-flow")
+;
+
+async main () {
+    const token = await jwt.getToken({
+        iss: "<YOUR_CONNECTED_APP_CLIENT_ID>",
+        sub: "<YOUR_SALESFORCE_USERNAME>",
+        aud: "<YOUR_AUDIENCE>",
+        privateKey: privateKey
+    });
+    console.log(token)
+}
+```
+
 The audience (aud) must be:
 - https://login.salesforce.com,
 - https://test.salesforce.com
