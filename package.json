@@ -6,7 +6,7 @@
   "typings": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/arthurimirzian/salesforce-jwt-bearer-token-flow.git"
+    "url": "https://github.com/ahuggins-nhs/sf-jwt-token.git"
   },
   "keywords": [
     "Salesforce",

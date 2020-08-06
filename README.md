@@ -1,11 +1,13 @@
-# Salesforce OAuth 2.0 JWT Bearer Token Flow Implementation
+# Salesforce JWT Token
+
+An implementation of Salesforce OAuth 2.0 JWT bearer token flow, modernized and using promises.
 
 [Salesforce OAuth 2.0 JWT Bearer Token Flow](https://help.salesforce.com/articleView?id=remoteaccess_oauth_jwt_flow.htm&type=5)
 
 ## Installation
 
 ```bash
-$ npm install salesforce-jwt-bearer-token-flow --save
+$ npm install sf-jwt-token --save
 ```
 
 ## Salesforce Configuration
@@ -28,40 +30,19 @@ Create a connected app in Salesforce:
 
 ## Usage
 
-### Input (Callback)
+```js
+const fs = require('fs')
+const { getToken } = require('sf-jwt-token')
+const privateKey = fs.readFileSync('private.pem').toString('utf8')
 
-```javascript
-const fs = require('fs'),
-  privateKey = fs.readFileSync('private.pem').toString('utf8'),
-  jwt = require('salesforce-jwt-bearer-token-flow')
-const token = jwt.getToken(
-  {
-    iss: '<YOUR_CONNECTED_APP_CLIENT_ID>',
-    sub: '<YOUR_SALESFORCE_USERNAME>',
-    aud: '<YOUR_AUDIENCE>',
-    privateKey: privateKey
-  },
-  function (err, token) {
-    console.log(token)
-  }
-)
-```
-
-### Input (Promise)
-
-```javascript
-const   fs = require('fs')
-    ,   privateKey = fs.readFileSync('private.pem').toString('utf8')
-    ,   jwt = require("salesforce-jwt-bearer-token-flow")
-;
-
-async main () {
-    const token = await jwt.getToken({
+async function main () {
+    const token = await getToken({
         iss: "<YOUR_CONNECTED_APP_CLIENT_ID>",
         sub: "<YOUR_SALESFORCE_USERNAME>",
         aud: "<YOUR_AUDIENCE>",
         privateKey: privateKey
-    });
+    })
+
     console.log(token)
 }
 ```
@@ -72,9 +53,9 @@ The audience (aud) must be:
 - https://test.salesforce.com
 - https://acme.force.com/customers (where acme.force.com/customers is your community URL)
 
-### Output
+### Example Output
 
-```javascript
+```js
 {
     access_token: 'xxxxxxxxxx!ARYAQNzk4LCbHsX[...]',
     scope: 'id full',
