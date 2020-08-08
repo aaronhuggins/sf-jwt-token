@@ -1,11 +1,12 @@
-const crypto = require('crypto')
-const { RequestIt } = require('request-it-client')
-const { Base64Url } = require('base64url-xplatform')
+import { RequestIt } from 'request-it-client'
+import { Base64Url } from 'base64url-xplatform'
+import * as crypto from 'crypto'
+import { TokenOptions, TokenOutput } from './Interfaces'
 
 const GRANT_TYPE = 'urn:ietf:params:oauth:grant-type:jwt-bearer'
 
 class JwtError extends Error {
-  constructor (statusCode, body) {
+  constructor (statusCode: number, body: any) {
     super('JWT flow errored with status code ' + statusCode.toString())
 
     Object.setPrototypeOf(this, JwtError.prototype)
@@ -13,16 +14,24 @@ class JwtError extends Error {
     this.statusCode = statusCode
     this.body = body
   }
+
+  body: any
+  statusCode: number
 }
 
-class SalesforceJwt {
-  constructor (options) {
+export class SalesforceJwt {
+  constructor (options: TokenOptions) {
     this.validateOptions(options)
     this.iss = options.iss
     this.sub = options.sub
     this.aud = options.aud
     this.privateKey = options.privateKey
   }
+
+  private iss: string
+  private sub: string
+  private aud: string
+  private privateKey: string
 
   get token () {
     const existingString = this.generatePayload()
@@ -38,7 +47,7 @@ class SalesforceJwt {
     return this.aud + '/services/oauth2/token'
   }
 
-  generatePayload () {
+  private generatePayload () {
     const header = { alg: 'RS256' }
     const claimsSet = {
       iss: this.iss,
@@ -53,7 +62,7 @@ class SalesforceJwt {
     return existingString
   }
 
-  validateOptions (options) {
+  private validateOptions (options: TokenOptions) {
     if (typeof options !== 'object') throw new Error('Missing parameters')
 
     const requiredProperties = ['iss', 'sub', 'aud', 'privateKey']
@@ -65,7 +74,7 @@ class SalesforceJwt {
     }
   }
 
-  async getToken () {
+  async getToken (): Promise<TokenOutput> {
     const { statusCode, body } = await RequestIt.post({
       url: this.postUrl,
       form: {
@@ -81,9 +90,7 @@ class SalesforceJwt {
     }
   }
 
-  static async getToken (options) {
+  static async getToken (options: TokenOptions): Promise<TokenOutput> {
     return await new SalesforceJwt(options).getToken()
   }
 }
-
-module.exports = { SalesforceJwt }

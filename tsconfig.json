@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "removeComments": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "es2017",
+    "experimentalDecorators": true,
+    "outDir": "dist",
+    "declaration": true,
+    "sourceMap": true,
+    "types": ["node"]
+  },
+
+  "exclude": ["node_modules", "dist", "gulpfile.ts"]
+}

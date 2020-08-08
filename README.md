@@ -36,14 +36,14 @@ const { getToken } = require('sf-jwt-token')
 const privateKey = fs.readFileSync('private.pem').toString('utf8')
 
 async function main () {
-    const token = await getToken({
-        iss: "<YOUR_CONNECTED_APP_CLIENT_ID>",
-        sub: "<YOUR_SALESFORCE_USERNAME>",
-        aud: "<YOUR_AUDIENCE>",
-        privateKey: privateKey
-    })
+  const token = await getToken({
+    iss: '<YOUR_CONNECTED_APP_CLIENT_ID>',
+    sub: '<YOUR_SALESFORCE_USERNAME>',
+    aud: '<YOUR_AUDIENCE>',
+    privateKey: privateKey
+  })
 
-    console.log(token)
+  console.log(token)
 }
 ```
 
